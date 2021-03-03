@@ -19,6 +19,15 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function questions() {
+        return $this->hasMany(Question::class);
+    }
+
+    public function setTitleAttribute($value){
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = str_slug($value);
+
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
