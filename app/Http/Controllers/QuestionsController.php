@@ -50,10 +50,10 @@ class QuestionsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Question  $questions
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $questions)
+    public function show(Question $question)
     {
         //
     }
@@ -61,24 +61,25 @@ class QuestionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Question  $questions
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit(Question $questions)
+    public function edit(Question $question)
     {
-        //
+        return view('questions.edit', compact('question'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Question  $questions
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $questions)
+    public function update(AskQuestionRequest $request, Question $question)
     {
-        //
+        $question->update($request->only('title', 'body'));
+        return redirect(route('questions.index'))->with('success', "Your question has been updated");
     }
 
     /**
