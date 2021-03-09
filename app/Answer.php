@@ -32,12 +32,7 @@ class Answer extends Model
         });
 
         static::deleted(function($answer) {
-            $question = $answer->question;
-            $question->decrement('answers_count',1);
-            if ($question->best_answer_id === $answer->id) {
-                $question->best_answer_id = null;
-                $question->save();
-            }
+            $answer->question->decrement('answers_count',1);
         });
 
     }
