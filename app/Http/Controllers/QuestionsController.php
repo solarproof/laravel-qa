@@ -20,7 +20,6 @@ class QuestionsController extends Controller
     {
 
         $questions = Question::with('user')->latest()->paginate(5);
-
         return view('questions.index', compact('questions'));
 
     }
