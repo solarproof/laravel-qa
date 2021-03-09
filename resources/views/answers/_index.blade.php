@@ -18,7 +18,7 @@
                             <a title="This answer is not useful" class="vote-down off">
                                 <i class="fas fa-caret-down fa-3x"></i>
                             </a>
-                            <a title="Click to mark as accepted (Click again to undo)" class="mt-2 vote-accepted">
+                            <a title="Click to mark as accepted (Click again to undo)" class="mt-2 {{ $answer->status }}">
                                 <i class="fas fa-heart fa-2x"></i></a>
                         </div>
                         <div class="media-body">
