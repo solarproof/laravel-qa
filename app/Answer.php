@@ -29,7 +29,10 @@ class Answer extends Model
         parent::boot();
         static::created(function ($answer) {
             $answer->question->increment('answers_count',1);
-            $answer->question->save();
+        });
+
+        static::deleted(function($answer) {
+            $answer->question->decrement('answers_count',1);
         });
 
     }
